@@ -820,7 +820,7 @@ var Zepto = (function() {
   // Generate the `width` and `height` functions
   ;['width', 'height'].forEach(function(dimension){
     var dimensionProperty =
-      dimension.replace(/./, function(m){ return m[0].toUpperCase() })
+      dimension.replace( /(^|\s)([a-z])/g , function(_, a, b) { return a + b.toUpperCase(); });
 
     $.fn[dimension] = function(value){
       var offset, el = this[0]
